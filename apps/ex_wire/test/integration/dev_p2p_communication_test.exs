@@ -22,7 +22,6 @@ defmodule ExWire.DEVp2pCommunicationTest do
     assert_received_ack_resp(initiator_pid, keys)
     assert_encrypted_handshake_success(initiator_pid)
 
-    assert_send_hello_packet(initiator_pid)
     assert_session_is_active(initiator_pid)
   end
 
@@ -43,13 +42,6 @@ defmodule ExWire.DEVp2pCommunicationTest do
     state = :sys.get_state(pid)
 
     assert ExWire.DEVp2p.session_active?(state.session)
-  end
-
-  defp assert_send_hello_packet(pid) do
-    assert_received {:trace, ^pid, :receive, {_, {:send, packet_data}}}
-
-    assert %{packet: {packet_mod, _packet_type, _packet_data}} = packet_data
-    assert packet_mod == ExWire.Packet.Hello
   end
 
   defp start_initiator_process(port) do

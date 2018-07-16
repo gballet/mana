@@ -183,17 +183,10 @@ defmodule ExWire.P2P do
     end
   end
 
-  defp send_unframed_data(data, socket, peer) do
-    Logger.debug(
-      "[Network] [#{peer}] Sending raw data message of length #{byte_size(data)} byte(s) to #{
-        peer.host
-      }"
-    )
-
-    TCP.send_data(socket, data)
-  end
-
-  defp send_packet(conn, packet) do
+  @doc """
+  Function for sending a packet over to a peer.
+  """
+  def send_packet(conn, packet) do
     %{socket: socket, secrets: secrets, peer: peer} = conn
 
     {:ok, packet_type} = Packet.get_packet_type(packet)
@@ -208,6 +201,16 @@ defmodule ExWire.P2P do
     TCP.send_data(socket, frame)
 
     Map.merge(conn, %{secrets: updated_secrets})
+  end
+
+  defp send_unframed_data(data, socket, peer) do
+    Logger.debug(
+      "[Network] [#{peer}] Sending raw data message of length #{byte_size(data)} byte(s) to #{
+        peer.host
+      }"
+    )
+
+    TCP.send_data(socket, data)
   end
 
   defp initiate_dev_p2p_session() do

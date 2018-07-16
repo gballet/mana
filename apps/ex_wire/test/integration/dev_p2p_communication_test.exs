@@ -26,7 +26,7 @@ defmodule ExWire.DEVp2pCommunicationTest do
   end
 
   defp assert_received_ack_resp(pid, %{private_key: private_key}) do
-    assert_received {:trace, ^pid, :receive, {:tcp, _socket, ack_data}}
+    assert_receive({:trace, ^pid, :receive, {:tcp, _socket, ack_data}}, 500)
 
     {:ok, ack_resp, _, _} = Handshake.read_ack_resp(ack_data, private_key)
     assert %ExWire.Handshake.Struct.AckRespV4{} = ack_resp
@@ -46,7 +46,7 @@ defmodule ExWire.DEVp2pCommunicationTest do
 
   defp start_initiator_process(port) do
     peer = build_peer_with_recipient_data(port)
-    ExWire.Adapter.TCP.start_link(:outbound, peer)
+    ExWire.P2P.Server.start_link(:outbound, peer)
   end
 
   defp start_recipient_process(port) do

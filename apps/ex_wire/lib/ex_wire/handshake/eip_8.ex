@@ -105,7 +105,7 @@ defmodule ExWire.Handshake.EIP8 do
         ""}
   """
   @spec unwrap_eip_8(binary(), ExthCrypto.Key.private_key()) ::
-          {:ok, RLP.t(), binary(), binary()} | {:error, String.t()}
+          {:ok, ExRLP.t(), binary(), binary()} | {:error, String.t()}
   def unwrap_eip_8(encoded_packet, my_static_private_key) do
     <<auth_size_int::size(16), _::binary()>> = encoded_packet
 

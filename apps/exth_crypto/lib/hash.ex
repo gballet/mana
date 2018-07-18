@@ -25,7 +25,7 @@ defmodule ExthCrypto.Hash do
   @doc """
   The KECCAK hasher, as defined by Ethereum.
   """
-  @spec kec() :: ExCrpyto.hash_type()
+  @spec kec() :: ExthCrypto.hash_type()
   def kec, do: {&ExthCrypto.Hash.Keccak.kec/1, nil, 256}
 
   @doc """

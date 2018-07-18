@@ -35,8 +35,8 @@ defmodule Exthereum.MixProject do
   # Run "mix help deps" for examples and options.
   defp deps do
     [
-      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
-      {:ethereumex, "~> 0.3.2"},
+      {:dialyxir, "~> 1.0.0-rc.2", only: [:dev, :test], runtime: false},
+      {:ethereumex, "~> 0.3.2"}
     ]
   end
 end

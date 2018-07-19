@@ -16,7 +16,7 @@ defmodule ExthCrypto.ECIES.Parameters do
   @type t :: %__MODULE__{
           mac: :crypto.hash_algorithms(),
           hasher: ExthCrypto.hash_type(),
-          cipher: ExthCrypto.cipher(),
+          cipher: ExthCrypto.Cipher.cipher(),
           key_len: integer()
         }
 

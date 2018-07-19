@@ -27,7 +27,7 @@ defmodule ExWire.Handshake.EIP8 do
           ExRLP.t(),
           ExthCrypto.Key.public_key(),
           {ExthCrypto.Key.public_key(), ExthCrypto.Key.private_key()} | nil,
-          Cipher.init_vector() | nil
+          ExthCrypto.Cipher.init_vector() | nil
         ) :: {:ok, binary()} | {:error, String.t()}
   def wrap_eip_8(
         rlp,

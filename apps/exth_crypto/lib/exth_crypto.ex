@@ -6,4 +6,5 @@ defmodule ExthCrypto do
   @type curve :: nil
   @type curve_params :: nil
   @type named_curve :: atom()
+  @type hash :: binary()
 end

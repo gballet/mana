@@ -221,7 +221,7 @@ defmodule ExthCrypto.AES do
       "hello"
   """
   @spec stream_decrypt(ExthCrypto.Cipher.ciphertext(), ExthCrypto.Cipher.stream()) ::
-          {ExthCrypto.Cipher.stream(), ExthCrypto.Cipher.plaintrxt()}
+          {ExthCrypto.Cipher.stream(), ExthCrypto.Cipher.plaintext()}
   def stream_decrypt(plaintext, stream) do
     :crypto.stream_decrypt(stream, plaintext)
   end

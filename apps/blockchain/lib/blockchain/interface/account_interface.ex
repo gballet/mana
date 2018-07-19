@@ -314,7 +314,7 @@ defimpl EVM.Interface.AccountInterface, for: Blockchain.Interface.AccountInterfa
           EVM.Wei.t(),
           binary(),
           integer(),
-          Header.t()
+          Block.Header.t()
         ) :: {EVM.Interface.AccountInterface.t(), EVM.Gas.t(), EVM.SubState.t(), EVM.VM.output()}
   def message_call(
         account_interface,
@@ -372,7 +372,7 @@ defimpl EVM.Interface.AccountInterface, for: Blockchain.Interface.AccountInterfa
           EVM.Wei.t(),
           EVM.MachineCode.t(),
           integer(),
-          Header.t()
+          Block.Header.t()
         ) :: {:ok | :error, {EVM.Interface.AccountInterface.t(), EVM.Gas.t(), EVM.SubState.t()}}
   def create_contract(
         account_interface,

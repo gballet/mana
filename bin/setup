@@ -48,7 +48,7 @@ fancy_echo "Installing elixir dependencies and compiling."
 mix local.hex --force
 mix local.rebar --force
 mix deps.get
-cd deps/libsecp256k1 && rebar compile && cd ../../
+cd deps/libsecp256k1 && ~/.mix/rebar compile && cd ../../
 mix do deps.compile, compile
 
 fancy_echo "You're all set!"
